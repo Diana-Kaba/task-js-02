@@ -20,14 +20,6 @@
     <button onclick="addText('Hello, world!')">Add text</button>
     <div id="block"></div>
 
-    <!-- Ex. 3 -->
-    <!-- <h2>Exercise 3</h2>
-    <div id="field" ondragover="allowDrop(event)" ondrop="drop(event)"></div>
-    <div id="msg"></div>
-    <br />
-    <button id="check">Check</button>
-    <br /> -->
-
     <!-- Ex. 4 -->
     <h2>Exercise 4</h2>
     <form>
@@ -67,6 +59,24 @@
     <h2>Exercise 6</h2>
     <canvas id="myCanvas" width="50" height="200" style="border:1px solid #000000;border-radius: 100px;">
     </canvas>
+
+    <!-- Ex. 3 -->
+    <h2>Exercise 3</h2>
+    <br>
+    <div id="field" ondragover="allowDrop(event)" ondrop="drop(event)"></div>
+    <br>
+    <div id="msg"></div>
+    <br>
+    <button id="check">Check</button>
+    <br>
+    <div id="rectangles">
+        <div id="drag1" class="rect" draggable="true" ondragstart="drag(event)"></div>
+        <div id="drag2" class="rect" draggable="true" ondragstart="drag(event)"></div>
+        <div id="drag3" class="rect" draggable="true" ondragstart="drag(event)"></div>
+        <div id="drag4" class="rect" draggable="true" ondragstart="drag(event)"></div>
+        <div id="drag5" class="rect" draggable="true" ondragstart="drag(event)"></div>
+    </div>
+    <br />
     <script src="./script.js"></script>
 </body>
 

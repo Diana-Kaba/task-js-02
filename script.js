@@ -31,67 +31,6 @@ function addText(text) {
   timer = setInterval(addLetter, 1000);
 }
 
-// Ex.3
-// let arrNumb = ["1", "2", "3", "4", "5"];
-// let number = arrNumb[Math.floor(Math.random() * arrNumb.length)];
-// let numbers = number.split(" ");
-
-// gen(random(numbers));
-
-// let dropField = document.getElementById("field");
-
-// function random(arr) {
-//   let randomNumbers = [];
-//   let n;
-
-//   for (let i = 0; randomNumbers.length < arr.length; i++) {
-//     n = Math.floor(Math.random() * arr.length);
-//     let exist = false;
-//     for (let j = 0; j < randomNumbers.length; j++) {
-//       if (arr[n] == randomNumbers[j]) {
-//         exist = true;
-//       }
-//     }
-//     if (!exist) {
-//       randomNumbers.push(arr[n]);
-//     }
-//   }
-//   return randomNumbers;
-// }
-
-// function allowDrop(event) {
-//   event.preventDefault();
-// }
-
-// function drag(event) {
-//   event.dataTransfer.setData("text", event.target.innerHTML);
-// }
-
-// function drop(event) {
-//   event.preventDefault();
-
-//   let data = event.dataTransfer.getData("text");
-//   dropField.innerHTML += `${data} `;
-// }
-
-// function check(event) {
-//   let str = dropField.innerText.trim();
-//   console.log(str);
-//   alert(str == number ? "Correct!" : "Error!");
-// }
-
-// function gen(arr) {
-//   for (let i = 0; i < arr.length; i++) {
-//     document.write(
-//       `<div id="drag${
-//         i + 1
-//       }" class="rect" draggable="true" ondragstart="drag(event)">${
-//         arr[i]
-//       }</div>`
-//     );
-//   }
-// }
-
 // Ex.4
 let btnFruit = document.getElementById("btn-fruit");
 btnFruit.addEventListener("click", selectFruit);
@@ -169,3 +108,65 @@ ctx.lineTo(26, 180);
 ctx.stroke();
 ctx.stroke();
 ctx.stroke();
+
+// Ex.3
+let arrNumb = ["1", "2", "3", "4", "5"];
+let number = Math.floor(Math.random() * arrNumb.length);
+let numbers = arrNumb.slice();
+gen(random(numbers));
+
+let dropField = document.getElementById("field");
+let checkButton = document.getElementById("check");
+
+checkButton.addEventListener("click", check);
+
+function random(arr) {
+  let randomNumbers = [];
+  let n;
+
+  for (let i = 0; randomNumbers.length < arr.length; i++) {
+    n = Math.floor(Math.random() * arr.length);
+    let exist = false;
+    for (let j = 0; j < randomNumbers.length; j++) {
+      if (arr[n] == randomNumbers[j]) {
+        exist = true;
+      }
+    }
+    if (!exist) {
+      randomNumbers.push(arr[n]);
+    }
+  }
+  return randomNumbers;
+}
+
+function allowDrop(event) {
+  event.preventDefault();
+}
+
+function drag(event) {
+  event.dataTransfer.setData("text", event.target.innerHTML);
+}
+
+function drop(event) {
+  event.preventDefault();
+
+  let data = event.dataTransfer.getData("text");
+  event.target.innerHTML += `${data} `;
+}
+
+function check(event) {
+  let msg = document.getElementById("msg");
+  let str = dropField.innerText.trim();
+  let expectedStr = numbers.join(" ");
+  if (str === expectedStr) {
+    msg.innerHTML = "Correct!";
+  } else {
+    msg.innerHTML = "Error!";
+  }
+}
+
+function gen(arr) {
+  for (let i = 0; i < arr.length; i++) {
+    document.getElementById(`drag${i + 1}`).innerHTML = arr[i];
+  }
+}
